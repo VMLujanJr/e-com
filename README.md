@@ -45,7 +45,7 @@ GIVEN a functional Express.js API
 THEN I am able to connect to a database using Sequelize
 ~~~
 
-- [ ] WHEN I enter schema and seed commands
+- [x] WHEN I enter schema and seed commands
 ~~~
 THEN a development database is created and is seeded with test data
 ~~~
