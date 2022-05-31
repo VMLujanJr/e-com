@@ -62,11 +62,6 @@ THEN the data for each of these routes is displayed in a formatted JSON
 
 - [ ] WHEN I test API POST, PUT, and DELETE routes in Insomnia
 ~~~
-THEN I am prompted to enter the name of the department and that department is added to the database
-~~~
-
-- [ ] WHEN I choose to add a role
-~~~
 THEN I am able to successfully create, update, and delete data in my database
 ~~~
 
