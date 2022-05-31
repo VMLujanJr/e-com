@@ -17,14 +17,14 @@ Product.belongsTo(Category, {
 // A Product belongs to many Tags (through ProductTag)
 Product.belongsToMany(Tag, {
   through: ProductTag,
-  as: 'product_tagCUSTOM',
+  as: 'product_ok',
   foreignKey: 'product_id'
-});
+}); 
 
 // A Tag belongs to many Products (through ProductTag)
 Tag.belongsToMany(Product, {
   through: ProductTag,
-  as: 'tag_idCUSTOm',
+  as: 'tags_ok',
   foreignKey: 'product_tag'
 });
 module.exports = {
