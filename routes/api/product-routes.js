@@ -57,7 +57,7 @@ router.get('/:id', (req, res) => {
   })
 });
 
-// create new product
+// Create a new product... /api/products
 router.post('/', (req, res) => {
   /* req.body should look like this...
     {
@@ -68,7 +68,7 @@ router.post('/', (req, res) => {
     }
   */
   Product.create(req.body)
-    .then((product) => {
+  .then((product) => {
       // if there's product tags, we need to create pairings to bulk create in the ProductTag model
       if (req.body.tagIds.length) {
         const productTagIdArr = req.body.tagIds.map((tag_id) => {
@@ -89,7 +89,7 @@ router.post('/', (req, res) => {
     });
 });
 
-// update product
+// Put (update) a product... /api/product/:id
 router.put('/:id', (req, res) => {
   // update product data
   Product.update(req.body, {
@@ -131,8 +131,25 @@ router.put('/:id', (req, res) => {
     });
 });
 
+// Delete a product... /api/products/:id
 router.delete('/:id', (req, res) => {
   // delete one product by its `id` value
+  Product.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+  .then(dbProductData => {
+    if (!dbProductData) {
+      res.status(404).json({ message: 'No product was found with this ID.'});
+      return;
+    }
+    res.json(dbProductData);
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
 });
 
 module.exports = router;
